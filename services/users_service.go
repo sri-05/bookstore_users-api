@@ -9,14 +9,16 @@ import (
 
 func GetUser(userid int64) (*users.User, *errors.RestErr) {
 	fmt.Println("type of userid in getuser func is", reflect.TypeOf(userid))
-	result := users.User{Id: userid}
+	fmt.Println(userid)
+	result := &users.User{Id: userid}
+	fmt.Println("result", result)
 	er := result.Get()
 	if er != nil {
 		return nil, er
 	}
 	fmt.Println("Type of userid after conv  is", reflect.TypeOf(result))
 	fmt.Println(result)
-	return &result, nil
+	return result, nil
 
 }
 

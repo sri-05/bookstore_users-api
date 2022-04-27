@@ -14,7 +14,7 @@ func GetUser(userid int64) (*users.User, *errors.RestErr) {
 	if er != nil {
 		return nil, er
 	}
-	fmt.Println("Type of userid after converting  is", reflect.TypeOf(result))
+	fmt.Println("Type of userid after conv  is", reflect.TypeOf(result))
 	fmt.Println(result)
 	return &result, nil
 

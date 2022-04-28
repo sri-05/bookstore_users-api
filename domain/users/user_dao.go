@@ -2,8 +2,8 @@ package users
 
 import (
 	"fmt"
+	"github.com/sri-05/bookstore_users-api/utils/date_utils"
 	"github.com/sri-05/bookstore_users-api/utils/errors"
-	"time"
 )
 
 var (
@@ -33,8 +33,7 @@ func (user *User) Save() *errors.RestErr {
 		}
 		return errors.NewBadRequestError(fmt.Sprintf("User %d is already avaiable", user.Id))
 	}
-	Now := time.Now()
-	user.DateCreated = Now.Format("2006-01-02T15:4:5MST")
+	user.DateCreated = date_utils.GetNowString()
 
 	UserDB[user.Id] = user
 

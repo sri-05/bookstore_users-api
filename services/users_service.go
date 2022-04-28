@@ -12,6 +12,7 @@ func GetUser(userid int64) (*users.User, *errors.RestErr) {
 	fmt.Println(userid)
 	result := &users.User{Id: userid}
 	fmt.Println("result", result)
+	fmt.Println(reflect.TypeOf(result))
 	er := result.Get()
 	if er != nil {
 		return nil, er

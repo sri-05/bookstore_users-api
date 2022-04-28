@@ -2,6 +2,8 @@ package users
 
 import (
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/sri-05/bookstore_users-api/datasources/mysql/users_db"
 	"github.com/sri-05/bookstore_users-api/utils/date_utils"
 	"github.com/sri-05/bookstore_users-api/utils/errors"
 )
@@ -26,6 +28,10 @@ func (user *User) Get() *errors.RestErr {
 }
 
 func (user *User) Save() *errors.RestErr {
+	err := users_db.Client.Ping()
+	if err != nil {
+		panic(err)
+	}
 	result := UserDB[user.Id]
 	if result != nil {
 		if result.Email == user.Email {
